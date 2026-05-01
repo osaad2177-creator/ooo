@@ -2,7 +2,7 @@
 // Root component — sets up routing and authentication guard
 
 import React from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import AppLayout from './components/layout/AppLayout';
@@ -84,9 +84,7 @@ const AppRoutes = () => (
 
 const App = () => (
   <AuthProvider>
-    {/* HashRouter is required for GitHub Pages — it uses /#/route instead of /route
-        so GitHub's static server never needs to handle client-side paths */}
-    <HashRouter>
+    <BrowserRouter>
       <AppRoutes />
       <Toaster
         position="top-right"
@@ -98,7 +96,7 @@ const App = () => (
           },
         }}
       />
-    </HashRouter>
+    </BrowserRouter>
   </AuthProvider>
 );
 
